@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlatformSounds
+{
+    SHRINK,
+    GROW
+}
+
 public class ShrinkingPlatformBehaviour : MonoBehaviour
 {
     public float dirY;
@@ -12,10 +18,14 @@ public class ShrinkingPlatformBehaviour : MonoBehaviour
 
     public float shrinkRate;
 
+    public AudioSource[] sounds;
+
     // Start is called before the first frame update
     void Start()
     {
         isActive = false;
+
+        sounds = GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,10 +59,13 @@ public class ShrinkingPlatformBehaviour : MonoBehaviour
     {
         if (isActive)
         {
-            if (gameObject.transform.localScale.x < 0.0f)
+            sounds[(int)PlatformSounds.SHRINK].Play();
+
+            if (gameObject.transform.localScale.x < 0.1f)
             {
                 gameObject.transform.localScale = new Vector2(0.01f, transform.localScale.y);
             }
+
             else
             {
                 gameObject.transform.localScale = new Vector2(transform.localScale.x - 3 * Time.deltaTime, transform.localScale.y);
@@ -60,14 +73,18 @@ public class ShrinkingPlatformBehaviour : MonoBehaviour
         }
         else
         {
-            StartCoroutine("ScaleBack");
+            if (gameObject.transform.localScale.x != 10.0f)
+            {
+                sounds[(int)PlatformSounds.GROW].PlayDelayed(0.1f);
+                StartCoroutine("ScaleBack");
+            }
         }
         
     }
 
     private IEnumerator ScaleBack()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         gameObject.transform.localScale = new Vector2(10.0f, 7.0f);
     }
 }
