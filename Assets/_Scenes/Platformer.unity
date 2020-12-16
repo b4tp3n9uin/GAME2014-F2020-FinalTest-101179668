@@ -21509,7 +21509,7 @@ GameObject:
   - component: {fileID: 1236469233}
   m_Layer: 8
   m_Name: ShrinkingPlatforms
-  m_TagString: Untagged
+  m_TagString: Shrinking Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21524,8 +21524,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.7599998, y: 4.25, z: 1.7827275}
   m_LocalScale: {x: 10, y: 7, z: 1}
-  m_Children:
-  - {fileID: 1702890296}
+  m_Children: []
   m_Father: {fileID: 1663000558}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21621,8 +21620,10 @@ MonoBehaviour:
   dirY: 4
   moveSpeed: 0.4
   movingUp: 0
+  isActive: 0
   max: 4.5
   min: 4.2
+  shrinkRate: 2
 --- !u!1 &1259930205
 GameObject:
   m_ObjectHideFlags: 0
@@ -23310,36 +23311,6 @@ Transform:
   - {fileID: 1236469230}
   m_Father: {fileID: 0}
   m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1702890295
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1702890296}
-  m_Layer: 8
-  m_Name: StartingPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1702890296
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1702890295}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1236469230}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1705747546
 GameObject:
