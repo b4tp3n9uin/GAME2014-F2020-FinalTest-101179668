@@ -6,6 +6,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
+/*
+* Source File Name: PlayerBehaviour.cs
+* Student Name: Matthew Makepeace
+* Student ID: 101179668
+* Date Last Modified: 12/15/2020
+* Program Description: Player Controls, Physics, Audio, and Animations.
+* Modifications: Only modified the OnEnter and Exit 2D Functions for
+*/
+
 [System.Serializable]
 public enum ImpulseSounds
 {
@@ -283,7 +292,7 @@ public class PlayerBehaviour : MonoBehaviour
             transform.SetParent(other.gameObject.transform);
         }
 
-        if (other.gameObject.CompareTag("Shrinking Platform"))
+        if (other.gameObject.CompareTag("Shrinking Platform")) // Shrink the Platform.
         {
             other.gameObject.GetComponent<ShrinkingPlatformBehaviour>().isActive = true;
         }
@@ -297,7 +306,7 @@ public class PlayerBehaviour : MonoBehaviour
             transform.SetParent(parent);
         }
 
-        if (other.gameObject.CompareTag("Shrinking Platform"))
+        if (other.gameObject.CompareTag("Shrinking Platform")) // Reset the Shrinking Platform.
         {
             other.gameObject.GetComponent<ShrinkingPlatformBehaviour>().isActive = false;
         }

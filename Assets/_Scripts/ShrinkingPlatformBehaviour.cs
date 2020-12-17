@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+* Source File Name: ShrinkingPlatformBehaviour.cs
+* Student Name: Matthew Makepeace
+* Student ID: 101179668
+* Date Last Modified: 12/15/2020
+* Program Description: Shrinking Platform movement, Size, and controls.
+* Modifications: Made the Shrinking Plaform move slightly up and down, and behaviour when player is on the platform to shrink and grow.
+*/
+
 public enum PlatformSounds
 {
     SHRINK,
