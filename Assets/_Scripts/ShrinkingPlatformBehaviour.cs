@@ -11,7 +11,7 @@ using UnityEngine;
 * Modifications: Made the Shrinking Plaform move slightly up and down, and behaviour when player is on the platform to shrink and grow.
 */
 
-public enum PlatformSounds
+public enum PlatformSounds // enums for Platforms States. Mainly for the Audio.
 {
     SHRINK,
     GROW
@@ -21,18 +21,18 @@ public class ShrinkingPlatformBehaviour : MonoBehaviour
 {
     public float dirY;
     public float moveSpeed;
-    public bool movingUp;
-    public bool isActive;
-    public float max, min;
+    public bool movingUp; // bool for Platform's direction
+    public bool isActive; // bool to check if the player is on the platform. if player is on platform it's true
+    public float max, min; // min and max values to determine when the platform should change it's moving direction.
 
     public float shrinkRate;
 
-    public AudioSource[] sounds;
+    public AudioSource[] sounds; 
 
     // Start is called before the first frame update
     void Start()
     {
-        isActive = false;
+        isActive = false; 
 
         sounds = GetComponents<AudioSource>();
     }
@@ -44,7 +44,7 @@ public class ShrinkingPlatformBehaviour : MonoBehaviour
         CheckActivation();
     }
 
-    void CheckDirection()
+    void CheckDirection() // function to change the moving directions of platform
     {
         if (transform.position.y >  max)
             movingUp = false;
@@ -66,7 +66,7 @@ public class ShrinkingPlatformBehaviour : MonoBehaviour
 
     private void CheckActivation()
     {
-        if (isActive)
+        if (isActive) // Player is on platform do this:
         {
             sounds[(int)PlatformSounds.SHRINK].Play();
 
@@ -80,18 +80,18 @@ public class ShrinkingPlatformBehaviour : MonoBehaviour
                 gameObject.transform.localScale = new Vector2(transform.localScale.x - 3 * Time.deltaTime, transform.localScale.y);
             }
         }
-        else
+        else // when player gets off platform do this: 
         {
             if (gameObject.transform.localScale.x != 10.0f)
             {
-                sounds[(int)PlatformSounds.GROW].PlayDelayed(0.1f);
-                StartCoroutine("ScaleBack");
+                sounds[(int)PlatformSounds.GROW].PlayDelayed(0.1f); 
+                StartCoroutine("ScaleBack"); // Scale platform to normal after 2 seconds.
             }
         }
         
     }
 
-    private IEnumerator ScaleBack()
+    private IEnumerator ScaleBack() // Function to scale back platform after 2 seconds
     {
         yield return new WaitForSeconds(2.0f);
         gameObject.transform.localScale = new Vector2(10.0f, 7.0f);
